@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.venv/
+
+# Environment Variables
+.env
+
+# Playwright
+playwright-report/
+test-results/
+
+# VisionQA
+auth/
+snapshots/
+reports/
+logs/
+
+# VS Code
+.vscode/
