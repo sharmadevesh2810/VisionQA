@@ -10,6 +10,8 @@ config/settings.py.
 
 from pathlib import Path
 
+BASELINES_DIR = Path("baselines")
+
 # ==============================================================================
 # Framework Information
 # ==============================================================================

@@ -1,6 +1,9 @@
-from pprint import pprint
-
+from comparison.baseline import BaselineManager
+from datetime import datetime
+from pathlib import Path
+from core.report import ReportManager
 from core.browser import Browser
+from core.constants import SNAPSHOTS_DIR
 from core.crawler import Crawler
 from core.environment import EnvironmentManager
 from core.logger import Logger
@@ -10,14 +13,24 @@ from core.navigation_manifest import NavigationManifest
 from core.tenant import TenantManager
 from core.version import VersionManager
 
-
 TENANT = "Astro PayTV"
+
+SESSION_FILE = Path("auth/stage.json")
 
 
 def main():
 
+    #
+    # Ensure auth directory exists
+    #
+
+    SESSION_FILE.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
     browser = Browser(
-        storage_state="auth/stage.json"
+        storage_state=str(SESSION_FILE),
     )
 
     page = browser.open()
@@ -31,7 +44,34 @@ def main():
         #
 
         Logger.section("Authentication")
-        Logger.success("Loaded existing browser session.")
+
+        if browser.is_authenticated():
+
+            Logger.success(
+                "Loaded existing browser session."
+            )
+
+        else:
+
+            Logger.warning(
+                "No valid browser session found."
+            )
+
+            Logger.info(
+                "Please login in the browser."
+            )
+
+            input(
+                "\nAfter login completes, press ENTER..."
+            )
+
+            browser.save_session(
+                str(SESSION_FILE)
+            )
+
+            Logger.success(
+                "Browser session saved."
+            )
 
         #
         # Tenant
@@ -64,13 +104,51 @@ def main():
 
         version = version_manager.get_version()
 
-        Logger.kv("Application Version", version)
+        Logger.kv(
+            "Application Version",
+            version,
+        )
+
+        #
+        # Create Run Directory
+        #
+
+        run_timestamp = datetime.now().strftime(
+            "%Y-%m-%d_%H-%M-%S"
+        )
+
+        snapshot_dir = (
+            SNAPSHOTS_DIR
+            / environment
+            / version
+            / run_timestamp
+        )
+
+        snapshot_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        #
+        # Initialize Logger
+        #
+
+        Logger.initialize(
+            snapshot_dir / "run.log"
+        )
+
+        Logger.kv(
+            "Run Directory",
+            snapshot_dir,
+        )
 
         #
         # Navigation Discovery
         #
 
-        Logger.section("Navigation Discovery")
+        Logger.section(
+            "Navigation Discovery"
+        )
 
         navigation = Navigation(page)
 
@@ -78,7 +156,7 @@ def main():
 
         Logger.kv(
             "Menus Discovered",
-            len(navigation_tree)
+            len(navigation_tree),
         )
 
         #
@@ -89,8 +167,7 @@ def main():
 
         crawler = Crawler(
             page=page,
-            environment=environment,
-            version=version,
+            snapshot_dir=snapshot_dir,
         )
 
         results = crawler.crawl(
@@ -103,7 +180,9 @@ def main():
 
         Logger.section("Metadata")
 
-        snapshot_dir = MetadataManager().write(
+        MetadataManager(
+            snapshot_dir
+        ).write(
             environment=environment,
             version=version,
             tenant=TENANT,
@@ -118,22 +197,101 @@ def main():
         # Navigation Manifest
         #
 
-        Logger.section("Navigation Manifest")
+        Logger.section(
+            "Navigation Manifest"
+        )
 
-        NavigationManifest(snapshot_dir).write(results)
+        NavigationManifest(
+            snapshot_dir
+        ).write(results)
 
-        Logger.success("navigation.json created.")
+        Logger.success(
+            "navigation.json created."
+        )
+
+
+
+                #
+        # HTML Report
+        #
+
+        Logger.section("HTML Report")
+
+        ReportManager(
+            snapshot_dir
+        ).generate(
+            environment=environment,
+            version=version,
+            tenant=TENANT,
+            results=results,
+        )
+
+        Logger.success(
+            "report.html created."
+        )
+
+        #
+        # Baseline
+        #
+
+        Logger.section("Baseline")
+
+        baseline = BaselineManager()
+
+        if baseline.exists(
+            environment,
+            version,
+        ):
+
+            Logger.info(
+                "Baseline already exists."
+            )
+
+        else:
+
+            path = baseline.create(
+                run_directory=snapshot_dir,
+                environment=environment,
+                version=version,
+            )
+
+            Logger.success(
+                f"Baseline created at {path}"
+            )
+
 
         #
         # Summary
         #
 
-        Logger.section("Run Summary")
+        Logger.section(
+            "Run Summary"
+        )
 
-        Logger.kv("Environment", environment)
-        Logger.kv("Version", version)
-        Logger.kv("Tenant", TENANT)
-        Logger.kv("Pages Crawled", len(results))
+        Logger.kv(
+            "Environment",
+            environment,
+        )
+
+        Logger.kv(
+            "Version",
+            version,
+        )
+
+        Logger.kv(
+            "Tenant",
+            TENANT,
+        )
+
+        Logger.kv(
+            "Run Directory",
+            snapshot_dir,
+        )
+
+        Logger.kv(
+            "Pages Crawled",
+            len(results),
+        )
 
         success = sum(
             1
@@ -141,15 +299,26 @@ def main():
             if r["status"] == "SUCCESS"
         )
 
-        Logger.kv("Successful", success)
-        Logger.kv("Failed", len(results) - success)
+        Logger.kv(
+            "Successful",
+            success,
+        )
 
-        pprint(results)
+        Logger.kv(
+            "Failed",
+            len(results) - success,
+        )
 
-        input("\nPress ENTER to close...")
+        DEBUG = False
+
+        if DEBUG:
+            input(
+                "\nPress ENTER to close..."
+            )
 
     finally:
 
+        Logger.close()
         browser.close()
 
 

@@ -13,6 +13,7 @@ from pathlib import Path
 from core.constants import (
     DEFAULT_ENCODING,
     METADATA_FILE,
+    SNAPSHOTS_DIR,
     VISIONQA_VERSION,
 )
 from core.logger import Logger
@@ -25,9 +26,8 @@ class MetadataManager:
 
     def __init__(
         self,
-        snapshot_dir: Path,
+        snapshot_dir: Path | None = None,
     ):
-
         self.snapshot_dir = snapshot_dir
 
     @property
@@ -47,8 +47,15 @@ class MetadataManager:
         Returns
         -------
         Path
-            Path to metadata.json
+            Snapshot directory
         """
+
+        if self.snapshot_dir is None:
+            self.snapshot_dir = (
+                SNAPSHOTS_DIR
+                / environment
+                / version
+            )
 
         self.snapshot_dir.mkdir(
             parents=True,
@@ -64,12 +71,13 @@ class MetadataManager:
             "visionqa_version": VISIONQA_VERSION,
         }
 
+        metadata_file = self.snapshot_dir / METADATA_FILE
+
         with open(
-            self.metadata_path,
+            metadata_file,
             "w",
             encoding=DEFAULT_ENCODING,
         ) as fp:
-
             json.dump(
                 metadata,
                 fp,
@@ -78,9 +86,11 @@ class MetadataManager:
             )
 
         Logger.section("Metadata Manager")
-
-        Logger.kv("Metadata File", self.metadata_path)
-
+        Logger.kv("Metadata File", metadata_file)
         Logger.success("metadata.json created successfully.")
 
-        return self.metadata_path
+        # IMPORTANT:
+        # Return the snapshot directory because
+        # NavigationManifest(snapshot_dir)
+        # expects a directory, not the metadata file.
+        return self.snapshot_dir

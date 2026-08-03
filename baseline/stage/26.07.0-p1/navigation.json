@@ -1,0 +1,786 @@
+{
+    "total_pages": 34,
+    "pages": [
+        {
+            "menu": "Content Management",
+            "submenu": "VOD",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/vod",
+            "title": "Iflex",
+            "load_time": 3.31,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\VOD.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "Channel",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/channel",
+            "title": "Iflex",
+            "load_time": 5.75,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\Channel.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "Channel Operational Status",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/channel_operational_status",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\Channel Operational Status.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "EPG",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/epg",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\EPG.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "Experience Manager",
+            "status": "SUCCESS",
+            "navigation_type": "POPUP",
+            "url": "https://cms.vrptv.astro.stage.xp.irdeto.com/dashboard",
+            "title": "Video Ready | PayTV",
+            "load_time": 10.23,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\Experience Manager.png",
+            "components": [
+                {
+                    "component": "header",
+                    "present": true,
+                    "selector": "header"
+                },
+                {
+                    "component": "sidebar",
+                    "present": true,
+                    "selector": "nav"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "Entitlement Control",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/offer_management/subscription",
+            "title": "Iflex",
+            "load_time": 3.29,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\Entitlement Control.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "Global Configuration",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/global_configuration",
+            "title": "Iflex",
+            "load_time": 3.29,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\Global Configuration.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Content Management",
+            "submenu": "Bouquet Management",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/content_management/bouquet_management/groups",
+            "title": "Iflex",
+            "load_time": 3.28,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Content Management\\Bouquet Management.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Household Manager",
+            "submenu": "Household",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/household_manager/household",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Household Manager\\Household.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Household Manager",
+            "submenu": "Update Household",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/household_manager/update_household",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Household Manager\\Update Household.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                },
+                {
+                    "component": "form",
+                    "present": true,
+                    "selector": "form"
+                }
+            ]
+        },
+        {
+            "menu": "Household Manager",
+            "submenu": "Group Management",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/household_manager/group_management",
+            "title": "Iflex",
+            "load_time": 3.26,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Household Manager\\Group Management.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "System Configuration",
+            "submenu": "Channel Logo",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/system_configuration/channel_logo",
+            "title": "Iflex",
+            "load_time": 6.84,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\System Configuration\\Channel Logo.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                },
+                {
+                    "component": "form",
+                    "present": true,
+                    "selector": "form"
+                }
+            ]
+        },
+        {
+            "menu": "System Configuration",
+            "submenu": "Packager Detail Configuration",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/system_configuration/packager_detail_configuration",
+            "title": "Iflex",
+            "load_time": 3.28,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\System Configuration\\Packager Detail Configuration.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "System Configuration",
+            "submenu": "Event Poster",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/system_configuration/event_poster",
+            "title": "Iflex",
+            "load_time": 3.26,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\System Configuration\\Event Poster.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                },
+                {
+                    "component": "form",
+                    "present": true,
+                    "selector": "form"
+                }
+            ]
+        },
+        {
+            "menu": "System Configuration",
+            "submenu": "Guide Metadata",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/system_configuration/guide_metadata",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\System Configuration\\Guide Metadata.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                },
+                {
+                    "component": "form",
+                    "present": true,
+                    "selector": "form"
+                }
+            ]
+        },
+        {
+            "menu": "System Configuration",
+            "submenu": "Device Propagator",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/system_configuration/device_propagator",
+            "title": "Iflex",
+            "load_time": 5.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\System Configuration\\Device Propagator.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "System Configuration",
+            "submenu": "Device Lookup",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/system_configuration/device_lookup",
+            "title": "Iflex",
+            "load_time": 3.26,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\System Configuration\\Device Lookup.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "Cohort Management",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/community_management/cohort_management",
+            "title": "Iflex",
+            "load_time": 3.28,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\Cohort Management.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "Device Configuration",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/community_management/device_configuration",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\Device Configuration.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "Experience Management",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/community_management/experience_management",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\Experience Management.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "UI Dictionary",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/community_management/ui_dictionary",
+            "title": "Iflex",
+            "load_time": 3.26,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\UI Dictionary.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "Software Configurations",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/community_management/software_configurations",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\Software Configurations.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "Fingerprint Profile",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/community_management/fingerprint_profile",
+            "title": "Iflex",
+            "load_time": 3.28,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\Fingerprint Profile.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Community Management",
+            "submenu": "ITAS Global",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/error/feature-unavailable",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Community Management\\ITAS Global.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Broadcast",
+            "submenu": "Software Target",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/broadcast/software_target",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Broadcast\\Software Target.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                },
+                {
+                    "component": "form",
+                    "present": true,
+                    "selector": "form"
+                }
+            ]
+        },
+        {
+            "menu": "Broadcast",
+            "submenu": "Text Message Target",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/broadcast/text_message_target",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Broadcast\\Text Message Target.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                },
+                {
+                    "component": "form",
+                    "present": true,
+                    "selector": "form"
+                }
+            ]
+        },
+        {
+            "menu": "Broadcast",
+            "submenu": "UI Dictionary Target",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/broadcast/ui_dictionary_target",
+            "title": "Iflex",
+            "load_time": 3.25,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Broadcast\\UI Dictionary Target.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Broadcast",
+            "submenu": "Schedule Management",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/broadcast/schedule_management/ota",
+            "title": "Iflex",
+            "load_time": 5.82,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Broadcast\\Schedule Management.png",
+            "components": []
+        },
+        {
+            "menu": "Reports",
+            "submenu": "Accounts Snapshot",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/reports/accounts_snapshot",
+            "title": "Iflex",
+            "load_time": 3.28,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Reports\\Accounts Snapshot.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Security",
+            "submenu": "DRM Manager",
+            "status": "SUCCESS",
+            "navigation_type": "POPUP",
+            "url": "https://astro.stage.ott.irdeto.com/ims/#/",
+            "title": "IMS",
+            "load_time": 6.94,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Security\\DRM Manager.png",
+            "components": [
+                {
+                    "component": "sidebar",
+                    "present": true,
+                    "selector": "nav"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Security",
+            "submenu": "Watermarking",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/security/watermarking",
+            "title": "Iflex",
+            "load_time": 3.26,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Security\\Watermarking.png",
+            "components": [
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Observability",
+            "submenu": "Audit logs",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/observability/audit_logs",
+            "title": "Iflex",
+            "load_time": 3.3,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Observability\\Audit logs.png",
+            "components": [
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Observability",
+            "submenu": "Monitoring",
+            "status": "SUCCESS",
+            "navigation_type": "POPUP",
+            "url": "https://astromon.astro.stage.xp.irdeto.com/d/AGGP000AstHome/astro-home?orgId=1&refresh=5m",
+            "title": "Astro / / Home - Astro - Dashboards - Grafana",
+            "load_time": 11.93,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Observability\\Monitoring.png",
+            "components": [
+                {
+                    "component": "sidebar",
+                    "present": true,
+                    "selector": "nav"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        },
+        {
+            "menu": "Advertisement",
+            "submenu": "ITAS",
+            "status": "SUCCESS",
+            "navigation_type": "INTERNAL",
+            "url": "https://opc.astro.stage.xp.irdeto.com/advertisement/itas",
+            "title": "Iflex",
+            "load_time": 3.27,
+            "error": null,
+            "screenshot": "snapshots\\stage\\26.07.0-p1\\2026-08-04_01-01-41\\Advertisement\\ITAS.png",
+            "components": [
+                {
+                    "component": "search",
+                    "present": true,
+                    "selector": "input[placeholder*='Search']"
+                },
+                {
+                    "component": "table",
+                    "present": true,
+                    "selector": "table"
+                },
+                {
+                    "component": "button",
+                    "present": true,
+                    "selector": "button"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "environment": "stage",
+    "version": "26.07.0-p1",
+    "tenant": "Astro PayTV",
+    "url": "https://opc.astro.stage.xp.irdeto.com/advertisement/itas",
+    "captured_at": "2026-08-04T01:06:31.118910",
+    "visionqa_version": "1.0.0"
+}

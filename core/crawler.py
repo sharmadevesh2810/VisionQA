@@ -11,6 +11,11 @@ Responsible for:
 
 from __future__ import annotations
 
+from comparison.component_detector import ComponentDetector
+
+
+from pathlib import Path
+
 from playwright.sync_api import Page
 
 from core.logger import Logger
@@ -28,8 +33,7 @@ class Crawler:
     def __init__(
         self,
         page: Page,
-        environment: str,
-        version: str,
+        snapshot_dir: Path,
     ):
 
         self.page = page
@@ -37,9 +41,9 @@ class Crawler:
         self.navigator = Navigator(page)
 
         self.screenshot_engine = ScreenshotEngine(
-            environment=environment,
-            version=version,
+            snapshot_dir=snapshot_dir,
         )
+        self.component_detector = ComponentDetector()
 
     def crawl(self, navigation_tree: list[dict]) -> list[dict]:
         """
@@ -134,6 +138,8 @@ class Crawler:
                         submenu=submenu_name,
                     )
 
+                    components = self.component_detector.detect( target_page)
+
                     Logger.kv(
                         "Screenshot",
                         screenshot_path,
@@ -142,13 +148,12 @@ class Crawler:
                 else:
 
                     screenshot_path = None
-
+                    components = []
                 #
                 # Store result
                 #
 
                 results.append(
-
                     {
                         "menu": menu_name,
                         "submenu": submenu_name,
@@ -163,8 +168,8 @@ class Crawler:
                             if screenshot_path
                             else None
                         ),
+                        "components": components,
                     }
-
                 )
 
                 #
@@ -174,11 +179,7 @@ class Crawler:
                 if result["status"] == "SUCCESS":
 
                     Logger.success(
-
-                        f"{result['type']} "
-
-                        f"({result['load_time']} sec)"
-
+                        f"{result['type']} ({result['load_time']} sec)"
                     )
 
                 elif result["status"] == "NO_NAVIGATION":

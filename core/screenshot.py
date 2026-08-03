@@ -17,10 +17,7 @@ from pathlib import Path
 
 from playwright.sync_api import Page
 
-from core.constants import (
-    SCREENSHOT_EXTENSION,
-    SNAPSHOTS_DIR,
-)
+from core.constants import SCREENSHOT_EXTENSION
 from core.logger import Logger
 
 
@@ -33,21 +30,18 @@ class ScreenshotEngine:
     snapshots/
         <environment>/
             <version>/
-                <menu>/
-                    <submenu>.png
+                <run_timestamp>/
+                    <menu>/
+                        <submenu>.png
     """
 
     def __init__(
         self,
-        environment: str,
-        version: str,
+        snapshot_dir: Path,
         stabilization_time: int = 3000,
         full_page: bool = True,
     ):
-
-        self.environment = self._sanitize(environment)
-        self.version = self._sanitize(version)
-
+        self.snapshot_dir = snapshot_dir
         self.stabilization_time = stabilization_time
         self.full_page = full_page
 
@@ -97,7 +91,9 @@ class ScreenshotEngine:
             full_page=self.full_page,
         )
 
-        Logger.success(f"Screenshot saved -> {screenshot_path}")
+        Logger.success(
+            f"Screenshot saved -> {screenshot_path}"
+        )
 
         return screenshot_path
 
@@ -111,9 +107,7 @@ class ScreenshotEngine:
     ) -> Path:
 
         directory = (
-            SNAPSHOTS_DIR
-            / self.environment
-            / self.version
+            self.snapshot_dir
             / self._sanitize(menu)
         )
 
@@ -155,6 +149,12 @@ class ScreenshotEngine:
             )
         except Exception:
             pass
+
+        #
+        # Allow Angular to finish rendering.
+        # We don't wait for every content image because
+        # VisionQA compares OPC components, not catalog content.
+        #
 
         page.wait_for_timeout(
             self.stabilization_time

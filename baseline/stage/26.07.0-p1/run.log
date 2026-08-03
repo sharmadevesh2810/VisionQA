@@ -1,0 +1,265 @@
+Run Directory       : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41
+
+================================================================================
+Navigation Discovery
+================================================================================
+Menus Discovered    : 10
+
+================================================================================
+Crawler
+================================================================================
+
+================================================================================
+Crawler
+================================================================================
+[01:02:00] [INFO] Menu : Content Management
+[01:02:01] [INFO]   → VOD
+[01:02:04] [INFO] Popup not detected. Trying internal navigation...
+[01:02:04] [INFO] Internal navigation successful.
+[01:02:08] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\VOD.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\VOD.png
+[01:02:08] [SUCCESS] INTERNAL (3.31 sec)
+[01:02:08] [INFO]   → Channel
+[01:02:11] [INFO] Popup not detected. Trying internal navigation...
+[01:02:14] [INFO] Internal navigation successful.
+[01:02:17] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Channel.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Channel.png
+[01:02:17] [SUCCESS] INTERNAL (5.75 sec)
+[01:02:17] [INFO]   → Channel Operational Status
+[01:02:20] [INFO] Popup not detected. Trying internal navigation...
+[01:02:20] [INFO] Internal navigation successful.
+[01:02:24] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Channel Operational Status.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Channel Operational Status.png
+[01:02:24] [SUCCESS] INTERNAL (3.27 sec)
+[01:02:24] [INFO]   → EPG
+[01:02:27] [INFO] Popup not detected. Trying internal navigation...
+[01:02:27] [INFO] Internal navigation successful.
+[01:02:30] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\EPG.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\EPG.png
+[01:02:30] [SUCCESS] INTERNAL (3.27 sec)
+[01:02:30] [INFO]   → Experience Manager
+[01:02:40] [INFO] Popup navigation detected.
+[01:02:44] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Experience Manager.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Experience Manager.png
+[01:02:44] [SUCCESS] POPUP (10.23 sec)
+[01:02:44] [INFO]   → Entitlement Control
+[01:02:47] [INFO] Popup not detected. Trying internal navigation...
+[01:02:47] [INFO] Internal navigation successful.
+[01:02:50] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Entitlement Control.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Entitlement Control.png
+[01:02:52] [SUCCESS] INTERNAL (3.29 sec)
+[01:02:52] [INFO]   → Global Configuration
+[01:02:55] [INFO] Popup not detected. Trying internal navigation...
+[01:02:55] [INFO] Internal navigation successful.
+[01:02:59] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Global Configuration.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Global Configuration.png
+[01:02:59] [SUCCESS] INTERNAL (3.29 sec)
+[01:02:59] [INFO]   → Bouquet Management
+[01:03:02] [INFO] Popup not detected. Trying internal navigation...
+[01:03:02] [INFO] Internal navigation successful.
+[01:03:05] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Bouquet Management.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Content Management\Bouquet Management.png
+[01:03:06] [SUCCESS] INTERNAL (3.28 sec)
+[01:03:06] [INFO] Menu : Household Manager
+[01:03:07] [INFO]   → Household
+[01:03:10] [INFO] Popup not detected. Trying internal navigation...
+[01:03:10] [INFO] Internal navigation successful.
+[01:03:13] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Household Manager\Household.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Household Manager\Household.png
+[01:03:13] [SUCCESS] INTERNAL (3.27 sec)
+[01:03:13] [INFO]   → Update Household
+[01:03:16] [INFO] Popup not detected. Trying internal navigation...
+[01:03:16] [INFO] Internal navigation successful.
+[01:03:20] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Household Manager\Update Household.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Household Manager\Update Household.png
+[01:03:20] [SUCCESS] INTERNAL (3.27 sec)
+[01:03:20] [INFO]   → Group Management
+[01:03:23] [INFO] Popup not detected. Trying internal navigation...
+[01:03:23] [INFO] Internal navigation successful.
+[01:03:26] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Household Manager\Group Management.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Household Manager\Group Management.png
+[01:03:26] [SUCCESS] INTERNAL (3.26 sec)
+[01:03:26] [INFO] Menu : System Configuration
+[01:03:27] [INFO]   → Channel Logo
+[01:03:30] [INFO] Popup not detected. Trying internal navigation...
+[01:03:34] [INFO] Internal navigation successful.
+[01:03:37] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Channel Logo.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Channel Logo.png
+[01:03:37] [SUCCESS] INTERNAL (6.84 sec)
+[01:03:37] [INFO]   → Packager Detail Configuration
+[01:03:40] [INFO] Popup not detected. Trying internal navigation...
+[01:03:41] [INFO] Internal navigation successful.
+[01:03:44] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Packager Detail Configuration.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Packager Detail Configuration.png
+[01:03:44] [SUCCESS] INTERNAL (3.28 sec)
+[01:03:44] [INFO]   → Event Poster
+[01:03:47] [INFO] Popup not detected. Trying internal navigation...
+[01:03:47] [INFO] Internal navigation successful.
+[01:03:50] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Event Poster.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Event Poster.png
+[01:03:50] [SUCCESS] INTERNAL (3.26 sec)
+[01:03:51] [INFO]   → Guide Metadata
+[01:03:54] [INFO] Popup not detected. Trying internal navigation...
+[01:03:54] [INFO] Internal navigation successful.
+[01:03:57] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Guide Metadata.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Guide Metadata.png
+[01:03:57] [SUCCESS] INTERNAL (3.27 sec)
+[01:03:57] [INFO]   → Device Propagator
+[01:04:00] [INFO] Popup not detected. Trying internal navigation...
+[01:04:02] [INFO] Internal navigation successful.
+[01:04:05] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Device Propagator.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Device Propagator.png
+[01:04:06] [SUCCESS] INTERNAL (5.27 sec)
+[01:04:06] [INFO]   → Device Lookup
+[01:04:09] [INFO] Popup not detected. Trying internal navigation...
+[01:04:09] [INFO] Internal navigation successful.
+[01:04:12] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Device Lookup.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\System Configuration\Device Lookup.png
+[01:04:12] [SUCCESS] INTERNAL (3.26 sec)
+[01:04:12] [INFO] Menu : Community Management
+[01:04:13] [INFO]   → Cohort Management
+[01:04:16] [INFO] Popup not detected. Trying internal navigation...
+[01:04:16] [INFO] Internal navigation successful.
+[01:04:20] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Cohort Management.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Cohort Management.png
+[01:04:21] [SUCCESS] INTERNAL (3.28 sec)
+[01:04:21] [INFO]   → Device Configuration
+[01:04:24] [INFO] Popup not detected. Trying internal navigation...
+[01:04:24] [INFO] Internal navigation successful.
+[01:04:27] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Device Configuration.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Device Configuration.png
+[01:04:28] [SUCCESS] INTERNAL (3.27 sec)
+[01:04:28] [INFO]   → Experience Management
+[01:04:31] [INFO] Popup not detected. Trying internal navigation...
+[01:04:31] [INFO] Internal navigation successful.
+[01:04:34] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Experience Management.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Experience Management.png
+[01:04:36] [SUCCESS] INTERNAL (3.27 sec)
+[01:04:36] [INFO]   → UI Dictionary
+[01:04:39] [INFO] Popup not detected. Trying internal navigation...
+[01:04:39] [INFO] Internal navigation successful.
+[01:04:42] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\UI Dictionary.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\UI Dictionary.png
+[01:04:42] [SUCCESS] INTERNAL (3.26 sec)
+[01:04:42] [INFO]   → Software Configurations
+[01:04:45] [INFO] Popup not detected. Trying internal navigation...
+[01:04:45] [INFO] Internal navigation successful.
+[01:04:49] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Software Configurations.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Software Configurations.png
+[01:04:50] [SUCCESS] INTERNAL (3.27 sec)
+[01:04:50] [INFO]   → Fingerprint Profile
+[01:04:53] [INFO] Popup not detected. Trying internal navigation...
+[01:04:53] [INFO] Internal navigation successful.
+[01:04:56] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Fingerprint Profile.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\Fingerprint Profile.png
+[01:04:57] [SUCCESS] INTERNAL (3.28 sec)
+[01:04:57] [INFO]   → ITAS Global
+[01:05:00] [INFO] Popup not detected. Trying internal navigation...
+[01:05:00] [INFO] Internal navigation successful.
+[01:05:03] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\ITAS Global.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Community Management\ITAS Global.png
+[01:05:03] [SUCCESS] INTERNAL (3.27 sec)
+[01:05:03] [INFO] Menu : Broadcast
+[01:05:04] [INFO]   → Software Target
+[01:05:07] [INFO] Popup not detected. Trying internal navigation...
+[01:05:08] [INFO] Internal navigation successful.
+[01:05:11] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\Software Target.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\Software Target.png
+[01:05:11] [SUCCESS] INTERNAL (3.27 sec)
+[01:05:11] [INFO]   → Text Message Target
+[01:05:14] [INFO] Popup not detected. Trying internal navigation...
+[01:05:14] [INFO] Internal navigation successful.
+[01:05:17] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\Text Message Target.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\Text Message Target.png
+[01:05:17] [SUCCESS] INTERNAL (3.27 sec)
+[01:05:17] [INFO]   → UI Dictionary Target
+[01:05:20] [INFO] Popup not detected. Trying internal navigation...
+[01:05:21] [INFO] Internal navigation successful.
+[01:05:24] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\UI Dictionary Target.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\UI Dictionary Target.png
+[01:05:24] [SUCCESS] INTERNAL (3.25 sec)
+[01:05:24] [INFO]   → Schedule Management
+[01:05:27] [INFO] Popup not detected. Trying internal navigation...
+[01:05:30] [INFO] Internal navigation successful.
+[01:05:33] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\Schedule Management.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Broadcast\Schedule Management.png
+[01:05:33] [SUCCESS] INTERNAL (5.82 sec)
+[01:05:33] [INFO] Menu : Reports
+[01:05:34] [INFO]   → Accounts Snapshot
+[01:05:37] [INFO] Popup not detected. Trying internal navigation...
+[01:05:37] [INFO] Internal navigation successful.
+[01:05:40] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Reports\Accounts Snapshot.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Reports\Accounts Snapshot.png
+[01:05:41] [SUCCESS] INTERNAL (3.28 sec)
+[01:05:41] [INFO] Menu : Overlay Application
+[01:05:42] [WARNING] No submenus found under 'Overlay Application'
+[01:05:42] [INFO] Menu : Security
+[01:05:43] [INFO]   → DRM Manager
+[01:05:50] [INFO] Popup navigation detected.
+[01:05:53] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Security\DRM Manager.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Security\DRM Manager.png
+[01:05:53] [SUCCESS] POPUP (6.94 sec)
+[01:05:53] [INFO]   → Watermarking
+[01:05:56] [INFO] Popup not detected. Trying internal navigation...
+[01:05:56] [INFO] Internal navigation successful.
+[01:05:59] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Security\Watermarking.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Security\Watermarking.png
+[01:05:59] [SUCCESS] INTERNAL (3.26 sec)
+[01:05:59] [INFO] Menu : Observability
+[01:06:00] [INFO]   → Audit logs
+[01:06:03] [INFO] Popup not detected. Trying internal navigation...
+[01:06:04] [INFO] Internal navigation successful.
+[01:06:07] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Observability\Audit logs.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Observability\Audit logs.png
+[01:06:07] [SUCCESS] INTERNAL (3.3 sec)
+[01:06:07] [INFO]   → Monitoring
+[01:06:19] [INFO] Popup navigation detected.
+[01:06:22] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Observability\Monitoring.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Observability\Monitoring.png
+[01:06:23] [SUCCESS] POPUP (11.93 sec)
+[01:06:23] [INFO] Menu : Advertisement
+[01:06:24] [INFO]   → ITAS
+[01:06:27] [INFO] Popup not detected. Trying internal navigation...
+[01:06:27] [INFO] Internal navigation successful.
+[01:06:31] [SUCCESS] Screenshot saved -> snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Advertisement\ITAS.png
+Screenshot          : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\Advertisement\ITAS.png
+[01:06:31] [SUCCESS] INTERNAL (3.27 sec)
+
+================================================================================
+Crawler Summary
+================================================================================
+Pages Crawled       : 34
+Successful          : 34
+Failed              : 0
+
+================================================================================
+Metadata
+================================================================================
+
+================================================================================
+Metadata Manager
+================================================================================
+Metadata File       : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\metadata.json
+[01:06:31] [SUCCESS] metadata.json created successfully.
+[01:06:31] [SUCCESS] metadata.json written to snapshots\stage\26.07.0-p1\2026-08-04_01-01-41
+
+================================================================================
+Navigation Manifest
+================================================================================
+
+================================================================================
+Navigation Manifest
+================================================================================
+Pages               : 34
+Manifest            : snapshots\stage\26.07.0-p1\2026-08-04_01-01-41\navigation.json
+[01:06:31] [SUCCESS] navigation.json created successfully.
+[01:06:31] [SUCCESS] navigation.json created.
+
+================================================================================
+HTML Report
+================================================================================
+[01:06:31] [SUCCESS] report.html created.
+
+================================================================================
+Baseline
+================================================================================

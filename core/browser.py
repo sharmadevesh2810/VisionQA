@@ -12,16 +12,9 @@ from playwright.sync_api import (
 class Browser:
     """
     Browser manager for VisionQA.
-
-    Usage:
-
-        browser = Browser(storage_state="auth/stage.json")
-        page = browser.open()
-
-        ...
-
-        browser.close()
     """
+
+    DEFAULT_URL = "https://opc.astro.stage.xp.irdeto.com/"
 
     def __init__(
         self,
@@ -39,10 +32,17 @@ class Browser:
         self.context: BrowserContext | None = None
         self.page: Page | None = None
 
-    def open(self) -> Page:
+    def open(
+        self,
+        url: str | None = None,
+    ) -> Page:
         """
-        Launch browser and return a Playwright page.
+        Launch browser and navigate to the given URL.
+
+        If no URL is supplied, VisionQA uses DEFAULT_URL.
         """
+
+        target_url = url or self.DEFAULT_URL
 
         self.playwright = sync_playwright().start()
 
@@ -69,20 +69,52 @@ class Browser:
 
         self.page = self.context.new_page()
 
+        self.page.goto(
+            target_url,
+            wait_until="networkidle",
+            timeout=60000,
+        )
+
         return self.page
 
-    def save_session(self, path: str) -> None:
+    def is_authenticated(self) -> bool:
         """
-        Save browser session.
+        Returns True if the current page is not the login page.
         """
+
+        if self.page is None:
+            return False
+
+        if "login" in self.page.url.lower():
+            return False
+
+        try:
+            if self.page.locator(
+                "input[type='password']"
+            ).count():
+                return False
+        except Exception:
+            pass
+
+        return True
+
+    def save_session(
+        self,
+        path: str,
+    ) -> None:
 
         if self.context:
             self.context.storage_state(path=path)
 
+    def delete_session(self) -> None:
+
+        if (
+            self.storage_state
+            and Path(self.storage_state).exists()
+        ):
+            Path(self.storage_state).unlink()
+
     def close(self) -> None:
-        """
-        Close browser and cleanup resources.
-        """
 
         if self.context:
             self.context.close()
