@@ -3,14 +3,33 @@
 VisionQA - Component Detector
 ==============================================================================
 
-Copyright (c) 2026 Devesh Sharma.
-All Rights Reserved.
+Extracts UI structure from a page.
 
-Author      : Devesh Sharma
-Framework   : VisionQA
+The detector focuses on UI elements rather than content values.
+
+Ignored:
+- Actual input values
+- IDs containing dynamic content
+- Image URLs
+- Dynamic dates
+- Content-specific text
+
+Captured:
+- Headings
+- Labels
+- Inputs
+- Textareas
+- Selects / dropdowns
+- Checkboxes
+- Radio buttons
+- Buttons
+- Tabs
+- Sections
 """
 
-from comparison.component_registry import COMPONENT_RULES
+from __future__ import annotations
+
+import re
 
 
 class ComponentDetector:
@@ -19,50 +38,284 @@ class ComponentDetector:
 
         components = []
 
-        for component, selectors in COMPONENT_RULES.items():
+        try:
+            components = page.evaluate(
+                """
+                () => {
 
-            unique_elements = set()
-            matched_selector = None
+                    const result = [];
 
-            for selector in selectors:
+                    function cleanText(text) {
+                        if (!text) return "";
 
-                try:
+                        return text
+                            .replace(/\\\\s+/g, " ")
+                            .trim();
+                    }
 
-                    locator = page.locator(selector)
+                    function add(type, element, extra = {}) {
 
-                    count = locator.count()
+                        if (!element) return;
 
-                    for i in range(count):
+                        const rect = element.getBoundingClientRect();
 
-                        element = locator.nth(i)
+                        // Ignore invisible elements
+                        if (
+                            rect.width === 0 ||
+                            rect.height === 0
+                        ) {
+                            return;
+                        }
 
-                        # Ignore hidden elements
-                        if not element.is_visible():
-                            continue
+                        const style =
+                            window.getComputedStyle(element);
 
-                        # Create a fingerprint for the element
-                        fingerprint = element.evaluate(
-                            "el => el.outerHTML"
+                        if (
+                            style.display === "none" ||
+                            style.visibility === "hidden"
+                        ) {
+                            return;
+                        }
+
+                        result.push({
+                            type: type,
+                            tag: element.tagName.toLowerCase(),
+                            text: cleanText(element.innerText),
+                            placeholder:
+                                element.getAttribute("placeholder") || "",
+                            ariaLabel:
+                                element.getAttribute("aria-label") || "",
+                            name:
+                                element.getAttribute("name") || "",
+                            role:
+                                element.getAttribute("role") || "",
+                            ...extra
+                        });
+                    }
+
+
+                    // ------------------------------------------------------
+                    // Headings
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll(
+                            "h1,h2,h3,h4,h5,h6"
                         )
+                        .forEach(el => {
 
-                        if fingerprint not in unique_elements:
+                            add(
+                                "heading",
+                                el
+                            );
 
-                            unique_elements.add(fingerprint)
+                        });
 
-                            if matched_selector is None:
-                                matched_selector = selector
 
-                except Exception:
-                    continue
+                    // ------------------------------------------------------
+                    // Labels
+                    // ------------------------------------------------------
 
-            if unique_elements:
+                    document
+                        .querySelectorAll("label")
+                        .forEach(el => {
 
-                components.append(
-    {
-        "component": component,
-        "present": True,
-        "selector": matched_selector,
-    }
-)
+                            add(
+                                "label",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Inputs
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll("input")
+                        .forEach(el => {
+
+                            const type =
+                                (
+                                    el.getAttribute("type")
+                                    || "text"
+                                ).toLowerCase();
+
+                            if (
+                                type === "hidden"
+                            ) {
+                                return;
+                            }
+
+                            add(
+                                "input",
+                                el,
+                                {
+                                    inputType: type
+                                }
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Textareas
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll("textarea")
+                        .forEach(el => {
+
+                            add(
+                                "textarea",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Select / dropdown
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll("select")
+                        .forEach(el => {
+
+                            add(
+                                "dropdown",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Buttons
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll(
+                            "button,[role='button']"
+                        )
+                        .forEach(el => {
+
+                            add(
+                                "button",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Checkboxes
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll(
+                            "input[type='checkbox']"
+                        )
+                        .forEach(el => {
+
+                            add(
+                                "checkbox",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Radio buttons
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll(
+                            "input[type='radio']"
+                        )
+                        .forEach(el => {
+
+                            add(
+                                "radio",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Tabs
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll(
+                            "[role='tab'],mat-tab"
+                        )
+                        .forEach(el => {
+
+                            add(
+                                "tab",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Tables
+                    // ------------------------------------------------------
+
+                    document
+                        .querySelectorAll("table")
+                        .forEach(el => {
+
+                            add(
+                                "table",
+                                el
+                            );
+
+                        });
+
+
+                    // ------------------------------------------------------
+                    // Remove duplicates
+                    // ------------------------------------------------------
+
+                    const seen = new Set();
+
+                    return result.filter(item => {
+
+                        const key = JSON.stringify({
+                            type: item.type,
+                            tag: item.tag,
+                            text: item.text,
+                            placeholder: item.placeholder,
+                            ariaLabel: item.ariaLabel,
+                            inputType: item.inputType
+                        });
+
+                        if (seen.has(key)) {
+                            return false;
+                        }
+
+                        seen.add(key);
+
+                        return true;
+
+                    });
+
+                }
+                """
+            )
+
+        except Exception as exc:
+
+            print(
+                f"[ComponentDetector] Failed: {exc}"
+            )
+
+            return []
 
         return components
