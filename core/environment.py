@@ -36,9 +36,9 @@ class EnvironmentManager:
     ENVIRONMENT_KEYWORDS = (
         "stage",
         "test",
-        "prod",
+        "live",
         "preprod",
-        "qa",
+        "e2eqa",
         "uat",
         "sit",
         "perf",

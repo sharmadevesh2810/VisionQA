@@ -90,10 +90,8 @@ class VODUIDetector:
                     "Package Type", "Source System", "Modified Date & Time",
                     "Created Date & Time", "Is Deleted", "Merged Central ID's",
                     "Title", "English", "Malay", "Chinese", "Tamil",
-                    "Long Synopsis", "Long Synopsis - Malay",
-                    "Long Synopsis - Chinese", "Long Synopsis - Tamil",
-                    "Short Synopsis", "Short Synopsis - Malay",
-                    "Short Synopsis - Chinese", "Short Synopsis - Tamil",
+                    "Long Synopsis",
+                    "Short Synopsis",
                     "Content Information", "Year of Release", "Audio Language",
                     "Certification", "Credits", "Directors", "Producers",
                     "Actors", "Owner Channels", "Business Unit",
@@ -309,6 +307,28 @@ class VODUIDetector:
                 const labels = unique(labelCandidates)
                     .map(({ type, text }) => ({ type, text }));
 
+                // Environment-specific layout safeguard:
+                // "Device Specific" is rendered as a static field label in the
+                // Access & Rights section, but Stage can place its label/value
+                // in a sibling structure that does not satisfy the generic
+                // peer-order heuristic above. Only add it when the exact,
+                // visible text node exists inside the VOD Details root. This
+                // avoids synthesizing labels that are absent from the page.
+                const hasDeviceSpecificLabel = labels.some(
+                    (item) => item.text === "Device Specific"
+                );
+                if (!hasDeviceSpecificLabel) {
+                    const deviceSpecificElement = inRoot("*").find((el) => {
+                        if (el.children.length !== 0) return false;
+                        if (el.closest("[role='tooltip'],[aria-hidden='true'],.cdk-visually-hidden,[aria-live]")) return false;
+                        return textOf(el) === "Device Specific";
+                    });
+
+                    if (deviceSpecificElement) {
+                        labels.push({ type: "label", text: "Device Specific" });
+                    }
+                }
+
                 const inputs = unique(
                     inRoot("input,textarea")
                         .filter((el) => {
@@ -408,7 +428,11 @@ class VODUIDetector:
                     radio_buttons: radioButtons,
                     buttons,
                     tabs,
-                    tables
+                    tables,
+                    // VOD Details screenshots contain catalog/backend values
+                    // (titles, IDs, synopsis text, dates, etc.). These values
+                    // must not make an otherwise identical static UI fail.
+                    screenshot_dynamic_content: true
                 };
             }
             """

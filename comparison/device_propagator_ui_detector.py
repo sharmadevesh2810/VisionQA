@@ -6,29 +6,34 @@ import re
 class DevicePropagatorUIDetector:
     """Static UI detector for System Configuration -> Device Propagator."""
 
-    STATIC_HEADINGS = {
+    LISTING_HEADINGS = {
         "Device Propagator",
+    }
+
+    DETAILS_HEADINGS = {
         "ZIP Details",
         "Service Status",
     }
 
-    STATIC_LABELS = {
-        # Listing
+    LISTING_LABELS = {
         "Upload ID",
         "File Name",
         "Map Attached",
         "Started Date & Time",
         "Status",
         "Actions",
-        # ZIP details
+    }
+
+    DETAILS_LABELS = {
+        "Upload ID",
         "SCPC File Name",
         "MAP File Name",
         "Uploaded By",
+        "Status",
         "Total Devices",
         "Device Chipset Type",
         "Start Date & Time",
         "Completed Date & Time",
-        # Service status
         "SCPC Files Upload",
         "KMS MAP Upload",
         "KMS SCD Upload",
@@ -52,86 +57,139 @@ class DevicePropagatorUIDetector:
         "Actions",
     ]
 
+    ZIP_DETAILS_FIELDS = [
+        "Upload ID",
+        "SCPC File Name",
+        "MAP File Name",
+        "Uploaded By",
+        "Status",
+        "Total Devices",
+        "Device Chipset Type",
+        "Start Date & Time",
+        "Completed Date & Time",
+    ]
+
+    SERVICE_STATUS_FIELDS = [
+        "SCPC Files Upload",
+        "KMS MAP Upload",
+        "KMS SCD Upload",
+        "KMS OSC Upload",
+        "KMS IID Upload",
+        "Account Manager Import",
+        "Operator IEP Upload",
+    ]
+
     def _clean(self, value: str | None) -> str:
         return re.sub(r"\s+", " ", (value or "")).strip()
 
     def _unique(self, values: list[str]) -> list[str]:
         return list(dict.fromkeys(x for x in values if x))
 
-    def _is_dynamic(self, value: str) -> bool:
-        value = self._clean(value)
-        if not value:
-            return True
-
-        # Numeric IDs, counts and values.
-        if re.fullmatch(r"\d+(?:\.\d+)?", value):
-            return True
-
-        # IP addresses.
-        if re.fullmatch(r"\d{1,3}(?:\.\d{1,3}){3}", value):
-            return True
-
-        # UUIDs / UUID-like identifiers.
-        if re.fullmatch(
-            r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-"
-            r"[0-9a-f]{4}-[0-9a-f]{12}",
-            value,
-            re.I,
-        ):
-            return True
-
-        # Date/time values.
-        if re.search(
-            r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b"
-            r"|\b\d{1,2}:\d{2}(?::\d{2})?\b",
-            value,
-        ):
-            return True
-
-        return False
+    def _dedupe_dicts(self, values: list[dict]) -> list[dict]:
+        seen = set()
+        result = []
+        for value in values:
+            key = tuple(sorted(value.items()))
+            if key not in seen:
+                seen.add(key)
+                result.append(value)
+        return result
 
     def _texts(self, page, selector: str) -> list[str]:
-        values = []
+        result = []
         for node in page.locator(selector).all():
             try:
+                if not node.is_visible():
+                    continue
                 text = self._clean(node.inner_text())
             except Exception:
                 continue
             if text:
-                values.append(text)
-        return values
+                result.append(text)
+        return self._unique(result)
 
-    def _headings(self, page) -> list[dict]:
+    def _body_text(self, page) -> str:
+        try:
+            return self._clean(page.locator("body").inner_text())
+        except Exception:
+            return ""
+
+    def _static_nodes(self, page) -> list[str]:
+        values = []
+        for node in page.locator(
+            "h1,h2,h3,h4,h5,h6,label,button,[role='button'],"
+            "mat-radio-button,[role='radio'],span,div"
+        ).all():
+            try:
+                if not node.is_visible():
+                    continue
+                text = self._clean(node.inner_text())
+            except Exception:
+                continue
+
+            if text and len(text) <= 120:
+                values.append(text)
+
+        return self._unique(values)
+
+    def _has_name(self, candidates: list[str], body: str, name: str) -> bool:
+        target = name.lower()
+
+        for text in candidates:
+            normalized = self._clean(text).lower()
+            if normalized == target:
+                return True
+            if normalized.startswith(target + ":"):
+                return True
+
+        return name.lower() in body.lower()
+
+    def _headings(
+        self,
+        candidates: list[str],
+        body: str,
+        names: set[str],
+    ) -> list[dict]:
         result = []
-        for text in self._texts(page, "h1,h2,h3,h4,h5,h6"):
-            # The listing heading is rendered as "Device Propagator (10)".
-            normalized = re.sub(r"\s*\(\d+\)\s*$", "", text).strip()
-            if normalized in self.STATIC_HEADINGS:
-                result.append({"type": "heading", "text": normalized})
+
+        # Semantic headings first.
+        for text in candidates:
+            if text in names:
+                result.append({
+                    "type": "heading",
+                    "text": text,
+                })
+
+        # Angular div/span based headings.
+        for name in names:
+            if self._has_name(candidates, body, name):
+                result.append({
+                    "type": "heading",
+                    "text": name,
+                })
 
         return self._dedupe_dicts(result)
 
-    def _labels(self, page) -> list[dict]:
+    def _labels(
+        self,
+        candidates: list[str],
+        body: str,
+        names: set[str],
+    ) -> list[dict]:
         result = []
 
-        # Native labels.
-        for text in self._texts(page, "label"):
-            text = re.sub(r"\s*\*\s*$", "", text).strip()
-            if text in self.STATIC_LABELS:
-                result.append({"type": "label", "text": text})
-
-        # Angular/div-based field labels.
-        for text in self._texts(page, "body"):
-            for label in self.STATIC_LABELS:
-                if label in text and label not in {
-                    item["text"] for item in result
-                }:
-                    result.append({"type": "label", "text": label})
+        for name in names:
+            if self._has_name(candidates, body, name):
+                result.append({
+                    "type": "label",
+                    "text": name,
+                })
 
         return self._dedupe_dicts(result)
 
     def _inputs(self, page) -> list[dict]:
         result = []
+
         for node in page.locator("input").all():
             try:
                 input_type = self._clean(
@@ -160,6 +218,7 @@ class DevicePropagatorUIDetector:
 
     def _selects(self, page) -> list[dict]:
         result = []
+
         for node in page.locator(
             "select, mat-select, [role='combobox']"
         ).all():
@@ -180,7 +239,7 @@ class DevicePropagatorUIDetector:
 
         return result
 
-    def _buttons(self, page, details: bool = False) -> list[dict]:
+    def _buttons(self, page, include_view: bool) -> list[dict]:
         result = []
 
         for text in self._texts(page, "button,[role='button']"):
@@ -190,92 +249,166 @@ class DevicePropagatorUIDetector:
                     "text": text,
                 })
 
-        # The listing's eye icon has no stable visible text.
-        if not details:
+        if include_view:
             try:
-                view_count = page.locator("#viewIcon").count()
+                if page.locator("#viewIcon").count():
+                    result.append({
+                        "type": "button",
+                        "text": "View",
+                        "selector": "#viewIcon",
+                    })
             except Exception:
-                view_count = 0
-
-            if view_count:
-                result.append({
-                    "type": "button",
-                    "text": "View",
-                    "selector": "#viewIcon",
-                })
+                pass
 
         return self._dedupe_dicts(result)
 
-    def _tables(self, page, details: bool = False) -> list[dict]:
-        if details:
-            return []
+    def _tables(self, page) -> list[dict]:
+        result = []
 
-        tables = []
         for table in page.locator("table").all():
             try:
-                header_cells = table.locator(
-                    "thead th, thead td"
-                ).all()
                 columns = []
-                for cell in header_cells:
+
+                for cell in table.locator(
+                    "thead th, thead td, "
+                    "tr:first-child th, tr:first-child td, "
+                    "[role='columnheader']"
+                ).all():
                     text = self._clean(cell.inner_text())
                     if text in self.LISTING_COLUMNS:
                         columns.append(text)
 
-                if not columns:
-                    # Fallback for Angular tables where headers are divs.
-                    header_row = table.locator(
-                        "tr"
-                    ).first
-                    for cell in header_row.locator(
-                        "th,td,[role='columnheader']"
-                    ).all():
-                        text = self._clean(cell.inner_text())
-                        if text in self.LISTING_COLUMNS:
-                            columns.append(text)
-
                 if columns:
-                    tables.append({
+                    result.append({
                         "type": "table",
                         "columns": self._unique(columns),
                     })
             except Exception:
                 continue
 
-        return tables
-
-    def _dedupe_dicts(self, values: list[dict]) -> list[dict]:
-        seen = set()
-        result = []
-        for value in values:
-            key = tuple(sorted(value.items()))
-            if key not in seen:
-                seen.add(key)
-                result.append(value)
         return result
 
     def detect_listing(self, page) -> dict:
+        candidates = self._static_nodes(page)
+        body = self._body_text(page)
+
+        headings = self._headings(
+            candidates,
+            body,
+            self.LISTING_HEADINGS,
+        )
+
+        labels = self._labels(
+            candidates,
+            body,
+            self.LISTING_LABELS,
+        )
+
+        inputs = self._inputs(page)
+        selects = self._selects(page)
+        buttons = self._buttons(page, include_view=True)
+        tables = self._tables(page)
+
+        ui_schema = {
+            "page": "Device Propagator",
+            "sections": [
+                {
+                    "name": "Device Propagator",
+                    "elements": [
+                        {
+                            "type": "table",
+                            "columns": list(self.LISTING_COLUMNS),
+                        }
+                    ],
+                }
+            ],
+            "actions": [
+                "Upload File",
+                "Load More",
+                "View",
+            ],
+        }
+
         return {
-            "headings": self._headings(page),
-            "labels": self._labels(page),
-            "inputs": self._inputs(page),
-            "selects": self._selects(page),
+            "headings": headings,
+            "labels": labels,
+            "inputs": inputs,
+            "selects": selects,
             "checkboxes": [],
             "radio_buttons": [],
-            "buttons": self._buttons(page, details=False),
+            "buttons": buttons,
             "tabs": [],
-            "tables": self._tables(page, details=False),
+            "tables": tables,
+            "ui_schema": ui_schema,
         }
 
     def detect_details(self, page) -> dict:
+        candidates = self._static_nodes(page)
+        body = self._body_text(page)
+
+        headings = self._headings(
+            candidates,
+            body,
+            self.DETAILS_HEADINGS,
+        )
+
+        labels = self._labels(
+            candidates,
+            body,
+            self.DETAILS_LABELS,
+        )
+
+        inputs = self._inputs(page)
+        selects = self._selects(page)
+
+        # Details page does not use business actions.
+        buttons = []
+
+        ui_schema = {
+            "page": "Device Propagator - Details",
+            "sections": [
+                {
+                    "name": "ZIP Details",
+                    "elements": [
+                        {
+                            "type": "field",
+                            "label": field,
+                            "control": "detail_field",
+                        }
+                        for field in self.ZIP_DETAILS_FIELDS
+                        if any(
+                            item.get("text") == field
+                            for item in labels
+                        )
+                    ],
+                },
+                {
+                    "name": "Service Status",
+                    "elements": [
+                        {
+                            "type": "service_status",
+                            "label": field,
+                        }
+                        for field in self.SERVICE_STATUS_FIELDS
+                        if any(
+                            item.get("text") == field
+                            for item in labels
+                        )
+                    ],
+                },
+            ],
+            "actions": [],
+        }
+
         return {
-            "headings": self._headings(page),
-            "labels": self._labels(page),
-            "inputs": self._inputs(page),
-            "selects": self._selects(page),
+            "headings": headings,
+            "labels": labels,
+            "inputs": inputs,
+            "selects": selects,
             "checkboxes": [],
             "radio_buttons": [],
-            "buttons": self._buttons(page, details=True),
+            "buttons": buttons,
             "tabs": [],
-            "tables": self._tables(page, details=True),
+            "tables": [],
+            "ui_schema": ui_schema,
         }

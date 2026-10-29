@@ -12,13 +12,23 @@ class VersionManager:
 
         Returns:
             Example: 26.07.0-pl
+
+        If the version element is not available, returns "unknown"
+        instead of stopping the VisionQA execution.
         """
 
-        version_text = (
-            self.page
-            .locator(".version-control")
-            .inner_text()
-            .strip()
-        )
+        try:
+            version_locator = self.page.locator(".version-control")
 
-        return version_text.replace("Version:", "").strip()
+            if not version_locator.is_visible(timeout=5000):
+                return "unknown"
+
+            version_text = version_locator.inner_text(timeout=5000).strip()
+
+            if not version_text:
+                return "unknown"
+
+            return version_text.replace("Version:", "").strip()
+
+        except Exception:
+            return "unknown"

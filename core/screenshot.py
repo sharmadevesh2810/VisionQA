@@ -73,21 +73,15 @@ class ScreenshotEngine:
 
         screenshot_path = directory / filename
 
-        restore_scroll = self._expand_main_scroll_container(page)
-
-        try:
-            page.wait_for_timeout(500)
-
-            page.screenshot(
-                path=str(screenshot_path),
-                full_page=self.full_page,
-            )
-
-        finally:
-            self._restore_scroll_container(
-                page,
-                restore_scroll,
-            )
+        # Do not mutate the application's scroll-container CSS before capture.
+        # Expanding an internal container can trigger a layout reflow and make
+        # some OPC pages appear compressed or surrounded by excessive whitespace.
+        # Keep the rendered layout intact and let Playwright capture the page.
+        page.wait_for_timeout(500)
+        page.screenshot(
+            path=str(screenshot_path),
+            full_page=self.full_page,
+        )
 
         Logger.success(
             f"Screenshot saved -> {screenshot_path}"
